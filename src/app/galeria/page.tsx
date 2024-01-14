@@ -9,7 +9,7 @@ return(
    
    
    
-    <h1>Galeria</h1>
+    
 
 
     </Template>
