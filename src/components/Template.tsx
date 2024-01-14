@@ -28,7 +28,7 @@ export const Template: React.FC<TemplateProps> = (props: TemplateProps) => {
 
 const Header: React.FC = () => {
     return(
-        <header className="font-sans bg-cyan-500 text-white py-5">
+        <header className="font-mono bg-cyan-500 text-white py-5">
             <div className="container mx-auto text-left">
                     <h1 className="text-2xl font-bold">
                         MyImg
