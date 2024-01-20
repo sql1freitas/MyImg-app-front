@@ -11,12 +11,15 @@ export default function GaleriaPage(){
     const useService = useImageService();
     const[images, setImages] = useState<Image[]>([])
     const[name, setName] = useState<string>('')
+    const[loading, setLoading] = useState<boolean>(false)
     
 
 
      async function searchImages() {
+        setLoading(true)
         const result = await useService.buscar(name)
         setImages(result || []);
+        setLoading(false)
         
     }
     
@@ -28,7 +31,9 @@ export default function GaleriaPage(){
             nome={image.name} 
             src={image.url} 
             tamanho={image.size} 
-            dataUpload={image.uploadDate}/>
+            dataUpload={image.uploadDate}
+            extension={image.extension}/>
+            
         )
     }
 
@@ -38,7 +43,7 @@ export default function GaleriaPage(){
 
 return(
 
-    <Template>
+    <Template loading={loading}>
           
         <section className="flex flex-col items-center justify-center my-5">
             <div className="flex space-x-4">
@@ -47,8 +52,8 @@ return(
                 searchImages();}}
                  className="border px-5 py-2 rounded-lg text-gray-900" />
 
-                <button className="bg-cyan-500 text-white px-4 py-2 rounded-lg" onClick={searchImages}>Buscar</button>
-                <button className="bg-cyan-800 text-white px-4 py-2 rounded-lg">Adicionar nova</button>
+                <button className="bg-cyan-500 text-white px-4 py-2 rounded-lg hover:bg-cyan-300" onClick={searchImages}>Buscar</button>
+                <button className="bg-cyan-800 text-white px-4 py-2 rounded-lg hover:bg-cyan-600">Adicionar nova</button>
               
             </div>
 
